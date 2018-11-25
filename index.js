@@ -13,8 +13,12 @@ function createHooks(namespace) {
     function destroy(asyncId) {
         delete namespace.context[asyncId];
     }
+    
+    function promiseResolve(asyncId) {
+        delete namespace.context[asyncId];
+    }
 
-    const asyncHook = asyncHooks.createHook({ init, destroy });
+    const asyncHook = asyncHooks.createHook({ init, destroy, promiseResolve });
 
     asyncHook.enable();
 }
